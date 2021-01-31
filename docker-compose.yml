@@ -15,8 +15,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: php_db
-      MYSQL_USER: php_user
-      MYSQL_PASSWORD: php_pass
+      MYSQL_USER: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
       TZ: 'Asia/Tokyo'
     volumes:
       - ./docker/db/data:/var/lib/mysql
