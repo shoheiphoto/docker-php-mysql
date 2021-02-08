@@ -15,6 +15,7 @@
 <head>
 <meta charset="UTF-8">
 <title>会員登録</title>
+<link rel="stylesheet" href="../view/css/table.css" />
 
 <script type="text/javascript">
 function pushExecuteButton(){

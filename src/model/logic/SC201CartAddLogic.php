@@ -2,12 +2,14 @@
 @session_start();
 /**
  * SC201CartAddLogic.php
- * 商品メニュー画面：検索ボタン(SC201CartAdd)押下
+ * 商品メニュー画面：＋ボタン(SC201CartAdd)押下
  */
 
 
 /** ログイン情報を取得 */
 $loginCustomer = unserialize($_SESSION["loginCustomer"]);
+
+$cart = unserialize($_SESSION["cart"]);
 
 
 $productGroupCode = $_REQUEST["productGroupCode"];
@@ -16,23 +18,20 @@ $productItemName = $_REQUEST["productItemName"];
 $productItemPrice = $_REQUEST["productItemPrice"];
 
 
-
 $productItem = new ProductItem($productGroupCode, $productItemCode, $productItemName, $productItemPrice, 1, 0, "");
-$cart = unserialize($_SESSION["cart"]);
 $cart->addProduct($productItem);
-
-
-
 
 
 $_SESSION["cart"] = serialize($cart); // カート情報をセッションに格納
 
 
 /** 共通モジュール：商品メニュー用リスト作成 */
-require_once("../model/logic/SC001ProductListCreate.php");
-
+require_once("SC201FindLogic.php");
 
 /** 次画面 */
+
 $nextView = "SC201ProductSalesListView"; // 次画面は「商品メニュー」
+
+
 
 ?>

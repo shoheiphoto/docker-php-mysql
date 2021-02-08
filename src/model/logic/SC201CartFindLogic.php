@@ -6,43 +6,19 @@
  */
 
 
-/** ログイン情報を取得 */
+// ログイン情報 取得
 $loginCustomer = unserialize($_SESSION["loginCustomer"]);
 
+// カート情報 取得
 $cart = unserialize($_SESSION["cart"]);
+// var_dump($cart);
 
 
+$cart->sortProductItemList();
+
+$_SESSION["cart"] = serialize($cart); // カート情報をセッションに格納
 
 
-// $productItem = new ProductStorage();
-
-// $productList = $cart->getProductItemList($productItem);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$_SESSION["cart"] = serialize($cart);
-
-/** 次画面 */
-$nextView = "SC202CartUpdateView"; // 次画面は「商品メニュー」
-
+// カート画面 表示
+$nextView = "SC202CartUpdateView";
 ?>

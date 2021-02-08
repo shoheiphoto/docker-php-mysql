@@ -14,6 +14,7 @@ if(!isset($message)){
 <head>
     <meta charset="UTF-8">
     <title>ようこそ</title>
+    <link rel="stylesheet" href="../view/css/table.css" />
 </head>
 <body>
     <!-- 見出し -->

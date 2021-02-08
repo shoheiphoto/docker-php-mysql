@@ -2,12 +2,9 @@
 @session_start();
 /**
  * SC102RegistLogic.php
- * 会員登録画面：会員登録ボタン(SC102Regist)押下
+ * 会員登録画面：登録ボタン(SC102Regist)押下
  */
 
-// if (isset($_POST['mail'])) {
-//     $_SESSION['RegistMail'] = $_POST['mail'];//入力された値をセッションに代入する
-// }
 
 
 /** セッションを取得 */

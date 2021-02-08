@@ -19,6 +19,7 @@ if(!isset($message)){
 <head>
     <meta charset="UTF-8">
     <title>会員ログイン</title>
+    <link rel="stylesheet" href="../view/css/table.css" />
 </head>
 
 <body>

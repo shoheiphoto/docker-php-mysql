@@ -12,6 +12,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>カート</title>
+	<link rel="stylesheet" href="../view/css/table.css" />
 </head>
 
 <body>
@@ -51,60 +52,61 @@
 					<td align="center">削除</td>
 				</tr>
 					<?php
-					foreach($productList as $vProduct){
+					foreach ($cart->getProductItemList() as $vProductItemList) {
 					?>
 					<tr>
 						<td align="center">
-						<?=$vProduct->getProductGroup()->getCode().$vProduct->getProductItem()->getCode()?>
+						<?= $vProductItemList->getProductGroupCode() . $vProductItemList->getCode(); ?>
 						</td>
-						<td><?=$vProduct->getProductItem()->getName()?></td>
+						<td><?=$vProductItemList->getName()?></td>
 						<td align="right">
-							<?=number_format($vProduct->getProductItem()->getPrice())?>
+							<?=number_format($vProductItemList->getPrice())?>
 						</td>
 						<td>
-							<input type="button" value="＋" name="add"
-							 onclick="this.form.buttonID.value='SC201CartAdd';
-							 this.form.productGroupCode.value='<?=$vProduct->getProductGroup()->getCode()?>';
-							 this.form.productItemCode.value='<?=$vProduct->getProductItem()->getCode()?>';
-							 this.form.productItemName.value='<?=$vProduct->getProductItem()->getName()?>';
-							 this.form.productItemPrice.value='<?=$vProduct->getProductItem()->getPrice()?>';
+							<input type="button" value="＋"
+							 onclick="this.form.buttonID.value='SC202CartAdd';
+							 this.form.productGroupCode.value='<?=$vProductItemList->getProductGroupCode()?>';
+							 this.form.productItemCode.value='<?=$vProductItemList->getCode()?>';
+							 this.form.productItemName.value='<?=$vProductItemList->getName()?>';
+							 this.form.productItemPrice.value='<?=$vProductItemList->getPrice()?>';
 							 this.form.submit();"
 			 				>
 			 				<?php
 			 				$disabled = "";
-			 				if($vProduct->getProductItem()->getStock() <= 0){
+			 				if($vProductItemList->getStock() <= 0){
 			 				    $disabled = "disabled";
 			 				}
 			 				?>
 			 				<input type="button" value="－"
 			 				<?=$disabled?>
-							 onclick="this.form.buttonID.value='SC201CartSubtract';
-							 this.form.productGroupCode.value='<?=$vProduct->getProductGroup()->getCode()?>';
-							 this.form.productItemCode.value='<?=$vProduct->getProductItem()->getCode()?>';
-							 this.form.productItemName.value='<?=$vProduct->getProductItem()->getName()?>';
-							 this.form.productItemPrice.value='<?=$vProduct->getProductItem()->getPrice()?>';
+							 onclick="this.form.buttonID.value='SC202CartSubtract';
+							 this.form.productGroupCode.value='<?=$vProductItemList->getProductGroupCode()?>';
+							 this.form.productItemCode.value='<?=$vProductItemList->getCode()?>';
+							 this.form.productItemName.value='<?=$vProductItemList->getName()?>';
+							 this.form.productItemPrice.value='<?=$vProductItemList->getPrice()?>';
 							 this.form.submit();"
 			 				>
 						</td>
 						<td align="right">
 							<?php
-							if($vProduct->getProductItem()->getStock() > 0){
-							?>
-							<?=number_format($vProduct->getProductItem()->getStock())?>
-							<?php
+							if($vProductItemList->getStock() > 0){
+                                echo number_format($vProductItemList->getStock());
 							}
 							?>
 						</td>
 						<td width="100" align="right">
-							<?=number_format($vProduct->getProductItem()->getPrice()) * number_format($vProduct->getProductItem()->getStock())?>
+							<?php
+                                echo number_format($vProductItemList->getPrice() *
+                                $vProductItemList->getStock());
+                            ?>
 						</td>
 						<td align="center">
 							<input type="button" value="×"
 							 onclick="this.form.buttonID.value='SC202CartDelete';
-							 this.form.productGroupCode.value='<?=$vProduct->getProductGroup()->getCode()?>';
-							 this.form.productItemCode.value='<?=$vProduct->getProductItem()->getCode()?>';
-							 this.form.productItemName.value='<?=$vProduct->getProductItem()->getName()?>';
-							 this.form.productItemPrice.value='<?=$vProduct->getProductItem()->getPrice()?>';
+							 this.form.productGroupCode.value='<?=$vProductItemList->getProductGroupCode()?>';
+							 this.form.productItemCode.value='<?=$vProductItemList->getCode()?>';
+							 this.form.productItemName.value='<?=$vProductItemList->getName()?>';
+							 this.form.productItemPrice.value='<?=$vProductItemList->getPrice()?>';
 							 this.form.submit();"
 			 				>
 						</tr>
@@ -112,10 +114,13 @@
 					}
 					?>
 						<tr>
-						<td colspan="4" align="center">合　計</td>
-						<td align="right">まだできてない</td>
-						<td align="right">まだできてない</td>
-						<td></td>
+						<td colspan="3" align="center">合　計</td>
+						<td align="center" colspan="2">
+							<?= number_format($cart->getSumQuantity()); ?>
+						</td>
+						<td align="right">
+							<?= number_format($cart->getSumMoney()); ?>
+						<td align="right"></td>
 						</tr>
 			</table>
 		</div>

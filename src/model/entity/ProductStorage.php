@@ -223,5 +223,22 @@ class ProductStorage{
         return $this->orderDate;
     }
 
+
+
+    /**
+     * カートを並び替える
+     */
+    public function sortProductItemList(){
+        $groupCodeArray = array();
+        $itemCodeArray = array();
+        foreach( $this->productItemList as $value) {
+            $groupCodeArray[] = $value->getProductGroupCode();
+            $itemCodeArray[] = $value->getCode();
+        }
+        array_multisort( $groupCodeArray, SORT_ASC, $itemCodeArray, SORT_ASC, $this->productItemList);
+    }
+
+
+
 }
 ?>

@@ -2,7 +2,7 @@
 @session_start();
 /**
  * SC103CustomerModifyView.php
- * 会員登録情報を更新する
+ * 会員更新画面を表示する
  */
 
 ?>
@@ -12,6 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <title>会員更新</title>
+<link rel="stylesheet" href="../view/css/table.css" />
 
 <script type="text/javascript">
 function pushExecuteButton(){

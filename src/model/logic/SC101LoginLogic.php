@@ -5,6 +5,12 @@
  * 会員ログイン画面：ログインボタン(SC101Login)押下
  */
 
+
+if (isset($_SESSION)){
+    $_SESSION = array();
+}
+
+
 /** セッションを取得 */
 $loginMail = $_REQUEST["loginMail"];
 $loginPassword = $_REQUEST["loginPassword"];

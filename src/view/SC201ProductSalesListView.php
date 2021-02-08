@@ -12,8 +12,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>商品メニュー</title>
-</head>
 
+	<link rel="stylesheet" href="../view/css/table.css" />
+
+</head>
 <body>
 	<?=$loginCustomer->getMail()?>
 	<?=$loginCustomer->getName()?>様
@@ -78,7 +80,8 @@
 						 value="<?=$findKeyword?>" maxLength="30" size="30" autofocus >
 					</td>
 					<td>
-						<input type="button" value="検索"
+						<input type="text" name="dummy" style="display:none;">
+						<input type="button" value="検索" autofocas
 						 onclick="this.form.buttonID.value='SC201Find'; this.form.submit();">
 					</td>
 				</tr>

@@ -2,7 +2,7 @@
 @session_start();
 /**
  * SC103ModifyLogic.php
- * 会員更新画面：会員更新ボタン(SC103Modify)押下
+ * 会員更新画面：更新ボタン(SC103Modify)押下
  */
 
 $loginCustomer = unserialize($_SESSION["loginCustomer"]);

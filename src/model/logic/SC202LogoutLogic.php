@@ -2,16 +2,16 @@
 @session_start();
 /**
  * SC202LoginLogic.php
- * ログアウト画面：ログアウトボタン(SC202Logout)押下
+ * カート画面：ログアウトボタン(SC202Logout)押下
  */
 
 $loginCustomer = unserialize($_SESSION["loginCustomer"]);
+$cart = unserialize($_SESSION["cart"]);
 
 $message = $loginCustomer->getName(). "様<br>ログアウトしました。<br>またのご利用をお待ちしております。";
 
-unset($_SESSION['loginCustomer']);
+$nextView = "SC190CustomerLogoutView"; // 次画面は「会員ログイン」
 
-
-$nextView = "SC101CustomerLoginView"; // 次画面は「会員ログイン」
+$_SESSION = array();
 
 ?>

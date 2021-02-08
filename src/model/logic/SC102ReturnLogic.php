@@ -1,8 +1,8 @@
 <?php
 @session_start();
 /**
- * SC000InitialLogic.php
- * 初期リクエスト：(SC000Initial)
+ * SC102ReturnLogic.php
+ * 会員登録画面：戻るボタン(SC102Return)押下
  */
 
 /** 次画面 */
